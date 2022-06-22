@@ -138,8 +138,8 @@ function Scene () {
     scene.centerCameraAt(0, 0)
     scene.cameraFollowSprite(Xwing)
 }
-let PixelToMeters = 0
 let Gravity = 0
+let PixelToMeters = 0
 let Xwing: Sprite = null
 color.setColor(11, color.rgb(122, 122, 122))
 color.setColor(15, color.rgb(20, 20, 20))
@@ -165,7 +165,6 @@ controller.moveSprite(Xwing, 0, 100)
 scene.cameraFollowSprite(Xwing)
 Scene()
 makeGravityCode()
-Xwing.vx = Gravity
 game.onUpdateInterval(300, function () {
     Xwing.vx += 1
 })
