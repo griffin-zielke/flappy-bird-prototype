@@ -1,5 +1,8 @@
 scene.onHitWall(SpriteKind.Player, function (sprite, location) {
     game.over(false)
+    if (Xwing.tileKindAt(TileDirection.Right, assets.tile`myTile1`)) {
+        game.over(true)
+    }
 })
 function makeGravityCode () {
     PixelToMeters = 30
@@ -163,6 +166,6 @@ scene.cameraFollowSprite(Xwing)
 Scene()
 makeGravityCode()
 Xwing.vx = Gravity
-game.onUpdateInterval(200, function () {
+game.onUpdateInterval(300, function () {
     Xwing.vx += 1
 })
