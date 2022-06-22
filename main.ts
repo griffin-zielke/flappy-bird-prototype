@@ -7,9 +7,10 @@ scene.onHitWall(SpriteKind.Player, function (sprite, location) {
 function makeGravityCode () {
     PixelToMeters = 30
     Gravity = 3 * PixelToMeters
-    speed = 3
+    speed = 1
     Xwing.ay = Gravity
     Xwing.x = speed
+    Xwing.vx = 60
 }
 function Scene () {
     color.setColor(10, color.rgb(43, 44, 54))
