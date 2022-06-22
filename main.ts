@@ -1,13 +1,15 @@
 scene.onHitWall(SpriteKind.Player, function (sprite, location) {
-    game.over(false)
     if (Xwing.tileKindAt(TileDirection.Right, assets.tile`myTile1`)) {
         game.over(true)
     }
+    game.over(false)
 })
 function makeGravityCode () {
     PixelToMeters = 30
     Gravity = 3 * PixelToMeters
+    speed = 3
     Xwing.ay = Gravity
+    Xwing.x = speed
 }
 function Scene () {
     color.setColor(10, color.rgb(43, 44, 54))
@@ -138,6 +140,7 @@ function Scene () {
     scene.centerCameraAt(0, 0)
     scene.cameraFollowSprite(Xwing)
 }
+let speed = 0
 let Gravity = 0
 let PixelToMeters = 0
 let Xwing: Sprite = null
@@ -165,6 +168,6 @@ controller.moveSprite(Xwing, 0, 100)
 scene.cameraFollowSprite(Xwing)
 Scene()
 makeGravityCode()
-game.onUpdateInterval(300, function () {
-    Xwing.vx += 1
+game.onUpdateInterval(100, function () {
+    Xwing.x += speed
 })
