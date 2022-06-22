@@ -4,6 +4,9 @@ scene.onHitWall(SpriteKind.Player, function (sprite, location) {
     }
     game.over(false)
 })
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    Xwing.vy = -100
+})
 function makeGravityCode () {
     PixelToMeters = 30
     Gravity = 3 * PixelToMeters
@@ -141,6 +144,9 @@ function Scene () {
     scene.centerCameraAt(0, 0)
     scene.cameraFollowSprite(Xwing)
 }
+controller.A.onEvent(ControllerButtonEvent.Released, function () {
+    Xwing.vy = 16
+})
 let speed = 0
 let Gravity = 0
 let PixelToMeters = 0
@@ -165,10 +171,14 @@ Xwing = sprites.create(img`
     .............11111111111b.......
     ................................
     `, SpriteKind.Player)
-controller.moveSprite(Xwing, 0, 100)
 scene.cameraFollowSprite(Xwing)
 Scene()
 makeGravityCode()
 game.onUpdateInterval(100, function () {
     Xwing.x += speed
+})
+game.onUpdateInterval(214, function () {
+    if (Xwing.tileKindAt(TileDirection.Right, assets.tile`myTile4`)) {
+        info.changeScoreBy(1)
+    }
 })
